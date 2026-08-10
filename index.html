@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GeoComposer: Geometry-Grounded Photographic Composition Instruction</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; color: #333; }
+    .hero-body { padding: 3rem 1.5rem; }
+    .publication-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 2.2rem; font-weight: 700; line-height: 1.3;
+    }
+    .publication-authors { margin-top: 1rem; }
+    .author-block { display: inline-block; margin: 0 0.3rem; }
+    .author-block a { color: #209cee; }
+    .author-notes { margin-top: 0.6rem; color: #777; line-height: 1.5; }
+    .publication-links .button { margin: 0.25rem; border-radius: 6px; }
+    .section-heading {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.7rem; font-weight: 700;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.4rem; margin-bottom: 1.2rem;
+    }
+    .subsection-heading {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.2rem; font-weight: 600;
+      margin-top: 1.5rem; margin-bottom: 0.6rem;
+    }
+    .abstract-box {
+      background: #f7f9fc; border-left: 4px solid #3273dc;
+      border-radius: 4px; padding: 1.5rem 2rem; line-height: 1.8;
+    }
+    .figure-container { text-align: center; margin: 2rem auto; }
+    .figure-container img {
+      max-width: 100%; border-radius: 6px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+    .figure-caption {
+      font-size: 0.9rem; color: #555;
+      margin: 0.8rem auto 0; max-width: 85%; line-height: 1.6;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .stat-card {
+      background: #f0f4ff; border-radius: 10px;
+      padding: 1.2rem 1rem; text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .stat-card .num {
+      font-size: 1.8rem; font-weight: 700; color: #3273dc;
+      font-family: 'Google Sans', sans-serif;
+    }
+    .stat-card .lbl { font-size: 0.82rem; color: #555; margin-top: 0.3rem; }
+    .results-table { font-size: 0.85rem; margin: 1.5rem auto; overflow-x: auto; }
+    .results-table table { margin: 0 auto; }
+    .results-table th { white-space: nowrap; }
+    .results-table td { white-space: nowrap; text-align: center; }
+    .results-table td.method { text-align: left; }
+    .results-table .best { font-weight: 700; color: #3273dc; }
+    .results-table .second { text-decoration: underline; }
+    .results-table tr.ours { background: #f0f4ff; }
+    .bibtex-block {
+      background: #2b2b2b; color: #f8f8f2; border-radius: 8px;
+      padding: 1.5rem; font-family: 'Courier New', monospace;
+      font-size: 0.9rem; overflow-x: auto; white-space: pre; line-height: 1.6;
+    }
+    footer.footer {
+      background: #fafafa; border-top: 1px solid #e8e8e8;
+      padding: 2rem 1.5rem; font-size: 0.88rem; color: #888;
+    }
+    footer a { color: #3273dc; }
+  </style>
+</head>
+<body>
+
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="publication-title">
+        GeoComposer: Geometry-Grounded<br/>Photographic Composition Instruction
+      </h1>
+      <div class="publication-authors is-size-5">
+        <span class="author-block">Shuangzhi Li<sup>1,2,*,&dagger;</sup></span>
+        <span class="author-block">Qiaoqiao Jia<sup>1,3,&dagger;</sup></span>
+        <span class="author-block">Xingxin Chen<sup>1</sup></span>
+        <span class="author-block">Guile Wu<sup>1</sup></span>
+        <span class="author-block">Dongfeng Bai<sup>1</sup></span>
+      </div>
+      <div class="is-size-6" style="margin-top:0.7rem; color:#555;">
+        <sup>1</sup>Huawei Noah's Ark Lab &nbsp;&nbsp;
+        <sup>2</sup>University of Alberta &nbsp;&nbsp;
+        <sup>3</sup>University of Waterloo
+      </div>
+      <div class="author-notes is-size-7">
+        <sup>*</sup>This work was done during an internship at Huawei Canada. &nbsp;&nbsp;
+        <sup>&dagger;</sup>Equal contribution.
+      </div>
+      <div class="publication-links" style="margin-top:1.5rem;">
+        <a class="button is-dark is-rounded" href="#" target="_blank">
+          <span class="icon"><i class="ai ai-arxiv"></i></span>
+          <span>arXiv</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0; padding-bottom:1rem;">
+  <div class="container is-max-desktop">
+    <div class="figure-container">
+      <img src="static/teaser.png" alt="GeoComposer Teaser" />
+      <p class="figure-caption">
+        <strong>Figure 1.</strong>
+        Given a poorly composed photograph, GeoComposer generates textual guidance together with a
+        geometry-consistent visual exemplar as the composition improvement guidance, achieving the best
+        balance between composition quality and geometric consistency among existing methods.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading" style="text-align: center;">Abstract</h2>
+    <div class="abstract-box">
+      Photographic composition aims to provide visual guidance for improving the framing, viewpoint, and
+      spatial arrangement of an image. Early methods primarily rely on image cropping to enhance composition,
+      which is restricted to the viewpoint and spatial arrangement of the input image. Recent methods have
+      explored image understanding and editing to improve composition, but they mainly focus on instruction
+      following and aesthetic quality, overlooking the importance of 3D scene geometry consistency for
+      photographic composition. In this work, we propose <strong>GeoComposer</strong>, a novel
+      geometry-grounded photographic composition framework that analyzes the composition of a given image to
+      generate textual guidance and synthesizes a visual exemplar that enhances the composition of the given
+      image. To promote geometry-grounded composition, we propose a geometry-aware representation learning
+      mechanism that leverages geometric priors from a visual geometry foundation model to shape the
+      intermediate representations of the composition editing model. This mechanism preserves both global
+      structural relationships and local fine-grained correspondences for geometry-grounded composition.
+      Furthermore, we propose a reinforcement learning strategy guided by a hybrid reward that jointly
+      optimizes instruction following, aesthetic quality, and geometric consistency. This enables the model
+      to generate visual exemplars that faithfully follow the composition instructions while remaining
+      visually appealing and geometrically consistent. Extensive experiments show the superiority of our
+      approach over state-of-the-art methods, highlighting its effectiveness in generating visually appealing
+      and geometrically consistent composition.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading" style="text-align: center;">Method</h2>
+    <div class="figure-container">
+      <img src="static/framework.png" alt="GeoComposer Framework" />
+      <p class="figure-caption">
+        <strong>Figure 2.</strong> The overall framework of GeoComposer.
+        A composition understanding model analyzes the poorly composed input and produces textual guidance,
+        which conditions a geometry-aware image editor to synthesize a well-composed visual exemplar.
+        Stage&nbsp;I distills geometric priors from a visual geometry foundation model into the editor via
+        geometry-aware representation learning; Stage&nbsp;II further optimizes the editor with hybrid
+        reward-guided reinforcement learning.
+      </p>
+    </div>
+    <h3 class="subsection-heading">Contributions</h3>
+    <ul style="list-style:disc; padding-left:1.5rem; line-height:1.7;">
+      <li style="margin-bottom:0.6rem;">
+        We propose a geometry-grounded photographic composition framework that comprehensively resolves the
+        challenges of instruction-following, compositional quality, and geometric consistency in photographic
+        composition.
+      </li>
+      <li style="margin-bottom:0.6rem;">
+        We introduce a geometry-aware representation learning mechanism that incorporates 3D geometric priors
+        from a visual geometry foundation model into the composition editing model, enhancing its
+        understanding of spatial relationships and viewpoint variations.
+      </li>
+      <li style="margin-bottom:0.6rem;">
+        We design a reinforcement learning strategy guided by a hybrid reward for optimizing the composition
+        editing model, explicitly enforcing geometric consistency while also considering instruction fidelity
+        and aesthetic quality.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="results" style="background:#f8fafc;">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading" style="text-align: center;">Results</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">78.1%</div><div class="lbl">Composition Win Rate<br/>(best among all methods)</div></div>
+      <div class="stat-card"><div class="num">66.4%</div><div class="lbl">Geometry Success<br/>(best among all methods)</div></div>
+      <div class="stat-card"><div class="num">0.184</div><div class="lbl">MET3R &darr;<br/>(best geometric consistency)</div></div>
+      <div class="stat-card"><div class="num">85.6%</div><div class="lbl">Human Study Overall<br/>(vs. 63.9% runner-up)</div></div>
+    </div>
+
+    <div class="results-table">
+      <table class="table is-striped is-hoverable is-narrow">
+        <thead>
+          <tr>
+            <th rowspan="2">Method</th>
+            <th colspan="2" style="text-align:center;">Composition</th>
+            <th colspan="2" style="text-align:center;">Image Quality</th>
+            <th colspan="2" style="text-align:center;">Geo. Consistency</th>
+            <th colspan="2" style="text-align:center;">Text Guidance</th>
+            <th style="text-align:center;">Human</th>
+          </tr>
+          <tr>
+            <th>WinRate (%) &uarr;</th><th>PF-ass &uarr;</th>
+            <th>QAlign &uarr;</th><th>DeQA &uarr;</th>
+            <th>Geo-Suc (%) &uarr;</th><th>MET3R &darr;</th>
+            <th>src&rarr;gen &uarr;</th><th>src&rarr;GT &uarr;</th>
+            <th>Overall &uarr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="method">BAGEL</td><td>46.5</td><td>2.588</td><td>2.823</td><td>3.598</td><td class="second">63.2</td><td>0.246</td><td>2.69</td><td>2.57</td><td>43.3</td></tr>
+          <tr><td class="method">Step1X-Edit</td><td>52.1</td><td>2.704</td><td>2.870</td><td>3.496</td><td>52.8</td><td>0.231</td><td>2.69</td><td>2.30</td><td>--</td></tr>
+          <tr><td class="method">Qwen-Image-Edit</td><td>73.9</td><td>2.987</td><td>3.272</td><td>3.869</td><td>54.4</td><td>0.257</td><td>3.16</td><td>2.60</td><td>59.4</td></tr>
+          <tr><td class="method">FLUX.2</td><td>67.9</td><td>2.948</td><td>3.133</td><td>3.820</td><td>61.0</td><td>0.233</td><td>--</td><td>--</td><td>40.6</td></tr>
+          <tr><td class="method">PhotoFramer</td><td>68.9</td><td>2.957</td><td>3.043</td><td>3.812</td><td>61.7</td><td>0.231</td><td class="second">3.21</td><td class="second">2.69</td><td>63.3</td></tr>
+          <tr><td class="method">Nano Banana Pro</td><td class="second">74.9</td><td class="second">3.081</td><td class="second">3.323</td><td class="best">4.041</td><td>58.9</td><td class="second">0.191</td><td>--</td><td>--</td><td class="second">63.9</td></tr>
+          <tr class="ours"><td class="method"><strong>GeoComposer (Ours)</strong></td><td class="best">78.1</td><td class="best">3.133</td><td class="best">3.381</td><td class="second">4.012</td><td class="best">66.4</td><td class="best">0.184</td><td class="best">3.45</td><td class="best">3.28</td><td class="best">85.6</td></tr>
+        </tbody>
+      </table>
+      <p class="figure-caption">
+        <strong>Table 1.</strong> Quantitative comparison with state-of-the-art methods on the constructed
+        validation set. <span class="best">Blue bold</span> and <span class="second">underline</span> mark
+        the best and second-best results; "--" denotes unavailable results.
+      </p>
+    </div>
+
+    <div class="figure-container">
+      <img src="static/qualitative.png" alt="Qualitative Results" />
+      <p class="figure-caption">
+        <strong>Figure 3.</strong> Qualitative comparison with state-of-the-art methods.
+      </p>
+    </div>
+
+    <div class="figure-container">
+      <img src="static/qualitative_supp.png" alt="Additional Qualitative Results" width="85%" />
+      <p class="figure-caption">
+        <strong>Figure 4.</strong> Additional qualitative comparison on diverse scenes. In each row, the
+        leftmost image is the poorly-composed input and the rightmost is the result of GeoComposer.
+      </p>
+    </div>
+
+    <div class="figure-container">
+      <img src="static/word_dist.png" alt="Word Distribution of Textual Guidance" width="85%" />
+      <p class="figure-caption">
+        <strong>Figure 5.</strong> Word distribution of the textual guidance produced by each composition
+        understanding model over the validation set.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop">
+    <h2 class="section-heading" style="text-align: center;">BibTeX</h2>
+    <p style="margin-bottom:1rem; color:#555;">If you find this work useful, please cite our paper:</p>
+    <div class="bibtex-block">@article{geocomposer2026,
+  title   = {GeoComposer: Geometry-Grounded Photographic Composition Instruction},
+  author  = {Anonymous},
+  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2026},
+}</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <p>
+          This website is licensed under a
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">
+            Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+        <p style="margin-top:0.5rem;">
+          Website template is from
+          <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>
+          (<a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">source</a>).
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
